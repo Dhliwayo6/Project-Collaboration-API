@@ -1,7 +1,7 @@
-package com.example.Project.Collaboaration.API.project.services;
+package com.example.Project.Collaboaration.API.project.services.projects;
 
 import com.example.Project.Collaboaration.API.Command;
-import com.example.Project.Collaboaration.API.project.ProjectRepository;
+import com.example.Project.Collaboaration.API.project.repositories.ProjectRepository;
 import com.example.Project.Collaboaration.API.project.model.Project;
 import com.example.Project.Collaboaration.API.project.model.ProjectDTO;
 import org.springframework.http.HttpStatus;

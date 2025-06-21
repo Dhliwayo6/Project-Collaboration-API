@@ -1,4 +1,33 @@
-package com.example.Project.Collaboaration.API.project.services;
+package com.example.Project.Collaboaration.API.project.services.projects;
 
-public class DeleteProjectService {
+import com.example.Project.Collaboaration.API.Command;
+import com.example.Project.Collaboaration.API.project.model.Project;
+import com.example.Project.Collaboaration.API.project.repositories.ProjectRepository;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
+
+import java.util.Optional;
+
+@Service
+public class DeleteProjectService implements Command<Integer, Void> {
+
+    private ProjectRepository projectRepository;
+
+    public DeleteProjectService(ProjectRepository projectRepository) {
+        this.projectRepository = projectRepository;
+    }
+
+    @Override
+    public ResponseEntity<Void> execute(Integer id) {
+
+        Optional<Project> projectOptional = projectRepository.findById(id);
+
+        if (projectOptional.isPresent()) {
+            projectRepository.deleteById(id);
+            return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+        }
+
+        throw new IllegalArgumentException("Project not found");
+    }
 }

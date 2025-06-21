@@ -1,7 +1,7 @@
-package com.example.Project.Collaboaration.API.project.services;
+package com.example.Project.Collaboaration.API.project.services.projects;
 
 import com.example.Project.Collaboaration.API.Query;
-import com.example.Project.Collaboaration.API.project.ProjectRepository;
+import com.example.Project.Collaboaration.API.project.repositories.ProjectRepository;
 import com.example.Project.Collaboaration.API.project.model.Project;
 import com.example.Project.Collaboaration.API.project.model.ProjectDTO;
 import org.springframework.http.HttpStatus;
@@ -24,7 +24,6 @@ public class GetProjectsService implements Query<Void, List<ProjectDTO>> {
         List<Project> projects = projectRepository.findAll();
         List<ProjectDTO> projectDTOS = projects.stream().map(ProjectDTO::new).toList();
 
-        //no need for throwing exception here, just return an empty list
         return ResponseEntity.status(HttpStatus.OK).body(projectDTOS);
     }
 }

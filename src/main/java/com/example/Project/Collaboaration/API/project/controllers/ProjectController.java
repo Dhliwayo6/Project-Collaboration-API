@@ -1,14 +1,11 @@
-package com.example.Project.Collaboaration.API.project;
+package com.example.Project.Collaboaration.API.project.controllers;
 
 import com.example.Project.Collaboaration.API.project.model.Project;
 import com.example.Project.Collaboaration.API.project.model.ProjectDTO;
-import com.example.Project.Collaboaration.API.project.services.CreateProjectService;
-import com.example.Project.Collaboaration.API.project.services.GetProjectsService;
+import com.example.Project.Collaboaration.API.project.model.UpdateProjectCommand;
+import com.example.Project.Collaboaration.API.project.services.projects.*;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -17,16 +14,20 @@ public class ProjectController {
 
     private final CreateProjectService createProjectService;
     private final GetProjectsService getProjectsService;
-//    private final GetProductsService getProductsService;
-//    private final UpdateProductService updateProductService;
-//    private final DeleteProductService deleteProductService;
-//    private final GetProductService getProductService;
-//    private final SearchProductService searchProductService;
+    private final GetProjectService getProjectService;
+    private final DeleteProjectService deleteProjectService;
+    private final UpdateProjectService updateProjectService;
 
-
-    public ProjectController(CreateProjectService createProjectService, GetProjectsService getProjectsService) {
+    public ProjectController(CreateProjectService createProjectService,
+                             GetProjectsService getProjectsService,
+                             GetProjectService getProjectService,
+                             DeleteProjectService deleteProjectService,
+                             UpdateProjectService updateProjectService) {
         this.createProjectService = createProjectService;
         this.getProjectsService = getProjectsService;
+        this.getProjectService = getProjectService;
+        this.deleteProjectService = deleteProjectService;
+        this.updateProjectService = updateProjectService;
     }
 
     @PostMapping("/project")
@@ -38,30 +39,23 @@ public class ProjectController {
     public ResponseEntity<List<ProjectDTO>> getProducts(){
         return getProjectsService.execute(null);
     }
-//
-//    //new get mapping to find by id
-//
-//    @GetMapping("/product/{id}")
-//    public ResponseEntity<ProductDTO> getProductById(@PathVariable Integer id) {
-//        return getProductService.execute(id);
-//    }
-//
-//    //Search functionality request
-//
-//    @GetMapping("/product/search")
-//    public ResponseEntity<List<ProductDTO>> searchProductByName(@RequestParam String name) {
-//        return searchProductService.execute(name);
-//    }
-//
-//    @PutMapping("/product/{id}")
-//    public ResponseEntity<ProductDTO> updateProduct(@PathVariable Integer id, @RequestBody Product product){
-//        return updateProductService.execute(new UpdateProductCommand(id, product));
-//    }
-//
-//    @DeleteMapping("/product/{id}")
-//    public ResponseEntity<Void> deleteProduct(@PathVariable Integer id){
-//        return deleteProductService.execute(id);
-//    }
+
+
+    @GetMapping("/product/{id}")
+    public ResponseEntity<ProjectDTO> getProductById(@PathVariable Integer id) {
+        return getProjectService.execute(id);
+    }
+
+
+    @PutMapping("/product/{id}")
+    public ResponseEntity<ProjectDTO> updateProduct(@PathVariable Integer id, @RequestBody Project project){
+        return updateProjectService.execute(new UpdateProjectCommand(id, project));
+    }
+
+    @DeleteMapping("/product/{id}")
+    public ResponseEntity<Void> deleteProduct(@PathVariable Integer id){
+        return deleteProjectService.execute(id);
+    }
 
 }
 
