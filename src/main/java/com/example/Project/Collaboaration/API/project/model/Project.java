@@ -3,6 +3,8 @@ package com.example.Project.Collaboaration.API.project.model;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -23,13 +25,31 @@ public class Project {
     @Column(name = "createdDate")
     private LocalDate createdDate;
 
-    public Project(Integer id, String description) {
+    @OneToMany(mappedBy = "project",
+            fetch = FetchType.LAZY,
+            orphanRemoval = true,
+            cascade = CascadeType.ALL)
+    private List<Task> tasks = new ArrayList<>();
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id")
+    private User user;
+
+    public Project(Integer id, String name, String description, LocalDate createdDate, List<Task> tasks, User user) {
         this.id = id;
+        this.name = name;
         this.description = description;
-        this.createdDate = LocalDate.now();
+        this.createdDate = createdDate;
+        this.tasks = tasks;
+        this.user = user;
     }
 
     public Project() {
+    }
+
+    public void addTask(Task task) {
+        tasks.add(task);
+        task.setProject(this);
     }
 
     public Integer getId() {
@@ -62,6 +82,22 @@ public class Project {
 
     public void setCreatedDate(LocalDate createdDate) {
         this.createdDate = createdDate;
+    }
+
+    public List<Task> getTasks() {
+        return tasks;
+    }
+
+    public void setTasks(List<Task> tasks) {
+        this.tasks = tasks;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 
     @Override

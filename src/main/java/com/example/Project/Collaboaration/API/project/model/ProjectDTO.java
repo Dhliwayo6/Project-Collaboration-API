@@ -1,6 +1,7 @@
 package com.example.Project.Collaboaration.API.project.model;
 
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Objects;
 
 public class ProjectDTO {
@@ -9,12 +10,16 @@ public class ProjectDTO {
     private String name;
     private String description;
     private LocalDate createdDate;
+    private List<Task> tasks;
+    private User user;
 
     public ProjectDTO(Project project) {
         this.id = project.getId();
         this.name = project.getName();
         this.description = project.getDescription();
         this.createdDate = project.getCreatedDate();
+        this.tasks = project.getTasks();
+        this.user = project.getUser();
     }
 
     public Integer getId() {
@@ -49,15 +54,31 @@ public class ProjectDTO {
         this.createdDate = createdDate;
     }
 
+    public List<Task> getTasks() {
+        return tasks;
+    }
+
+    public void setTasks(List<Task> tasks) {
+        this.tasks = tasks;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
         ProjectDTO that = (ProjectDTO) o;
-        return Objects.equals(getId(), that.getId()) && Objects.equals(getName(), that.getName()) && Objects.equals(getDescription(), that.getDescription()) && Objects.equals(getCreatedDate(), that.getCreatedDate());
+        return Objects.equals(id, that.id) && Objects.equals(name, that.name) && Objects.equals(description, that.description) && Objects.equals(createdDate, that.createdDate) && Objects.equals(tasks, that.tasks) && Objects.equals(user, that.user);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId(), getName(), getDescription(), getCreatedDate());
+        return Objects.hash(id, name, description, createdDate, tasks, user);
     }
 }
