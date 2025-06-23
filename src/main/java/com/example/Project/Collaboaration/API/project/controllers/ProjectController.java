@@ -1,7 +1,7 @@
 package com.example.Project.Collaboaration.API.project.controllers;
 
-import com.example.Project.Collaboaration.API.project.model.Project;
-import com.example.Project.Collaboaration.API.project.model.ProjectDTO;
+import com.example.Project.Collaboaration.API.project.model.project.Project;
+import com.example.Project.Collaboaration.API.project.model.project.ProjectDTO;
 import com.example.Project.Collaboaration.API.project.model.UpdateProjectCommand;
 import com.example.Project.Collaboaration.API.project.services.projects.*;
 import org.springframework.http.ResponseEntity;
@@ -41,18 +41,18 @@ public class ProjectController {
     }
 
 
-    @GetMapping("/product/{id}")
+    @GetMapping("/project/{id}")
     public ResponseEntity<ProjectDTO> getProductById(@PathVariable Integer id) {
         return getProjectService.execute(id);
     }
 
 
-    @PutMapping("/product/{id}")
+    @PutMapping("/project/{id}")
     public ResponseEntity<ProjectDTO> updateProduct(@PathVariable Integer id, @RequestBody Project project){
         return updateProjectService.execute(new UpdateProjectCommand(id, project));
     }
 
-    @DeleteMapping("/product/{id}")
+    @DeleteMapping("/project/{id}")
     public ResponseEntity<Void> deleteProduct(@PathVariable Integer id){
         return deleteProjectService.execute(id);
     }
