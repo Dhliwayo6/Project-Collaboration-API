@@ -1,5 +1,6 @@
 package com.example.Project.Collaboaration.API.project.model;
 
+import com.example.Project.Collaboaration.API.project.model.project.Project;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
