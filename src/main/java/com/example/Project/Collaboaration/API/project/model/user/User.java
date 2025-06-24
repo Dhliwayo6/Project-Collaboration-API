@@ -1,6 +1,7 @@
 package com.example.Project.Collaboaration.API.project.model.user;
 
 import com.example.Project.Collaboaration.API.project.model.project.Project;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
@@ -34,7 +35,7 @@ public class User {
                 fetch = FetchType.LAZY,
                 orphanRemoval = true,
                 cascade = CascadeType.ALL)
-
+    @JsonIgnore
     private List<Project> projects;
 
     public User(Integer id, String firstName, String lastName, String email) {
@@ -50,10 +51,11 @@ public class User {
         this.dateCreated = LocalDate.now();
     }
 
-    public  void addProject(Project project) {
+    public void addProject(Project project) {
         projects.add(project);
         project.setUser(this);
     }
+
     public Integer getId() {
         return id;
     }
@@ -106,12 +108,12 @@ public class User {
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
         User user = (User) o;
-        return Objects.equals(id, user.id) && Objects.equals(firstName, user.firstName) && Objects.equals(lastName, user.lastName) && Objects.equals(email, user.email) && Objects.equals(dateCreated, user.dateCreated);
+        return Objects.equals(id, user.id) && Objects.equals(firstName, user.firstName) && Objects.equals(lastName, user.lastName) && Objects.equals(email, user.email) && Objects.equals(dateCreated, user.dateCreated) && Objects.equals(projects, user.projects);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, firstName, lastName, email, dateCreated);
+        return Objects.hash(id, firstName, lastName, email, dateCreated, projects);
     }
 }
 

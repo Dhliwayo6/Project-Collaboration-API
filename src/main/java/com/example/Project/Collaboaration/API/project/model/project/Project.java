@@ -2,6 +2,9 @@ package com.example.Project.Collaboaration.API.project.model.project;
 
 import com.example.Project.Collaboaration.API.project.model.task.Task;
 import com.example.Project.Collaboaration.API.project.model.user.User;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
@@ -10,6 +13,10 @@ import java.util.List;
 import java.util.Objects;
 
 @Entity
+@JsonIgnoreProperties({
+        "hibernateLazyInitializer",
+        "handler"
+})
 @Table(name = "projects")
 public class Project {
 
@@ -31,9 +38,10 @@ public class Project {
             fetch = FetchType.LAZY,
             orphanRemoval = true,
             cascade = CascadeType.ALL)
+    @JsonIgnore
     private List<Task> tasks = new ArrayList<>();
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "user_id")
     private User user;
 
