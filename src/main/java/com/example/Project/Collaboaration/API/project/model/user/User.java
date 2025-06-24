@@ -1,4 +1,4 @@
-package com.example.Project.Collaboaration.API.project.model;
+package com.example.Project.Collaboaration.API.project.model.user;
 
 import com.example.Project.Collaboaration.API.project.model.project.Project;
 import jakarta.persistence.*;
@@ -8,6 +8,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+
+@Entity
+@Table(name = "app_users")
 public class User {
 
     @Id

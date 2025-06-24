@@ -2,8 +2,8 @@ package com.example.Project.Collaboaration.API.project.services.projects;
 
 import com.example.Project.Collaboaration.API.Command;
 import com.example.Project.Collaboaration.API.project.repositories.ProjectRepository;
-import com.example.Project.Collaboaration.API.project.model.Project;
-import com.example.Project.Collaboaration.API.project.model.ProjectDTO;
+import com.example.Project.Collaboaration.API.project.model.project.Project;
+import com.example.Project.Collaboaration.API.project.model.project.ProjectDTO;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;

@@ -1,5 +1,7 @@
-package com.example.Project.Collaboaration.API.project.model;
+package com.example.Project.Collaboaration.API.project.model.project;
 
+import com.example.Project.Collaboaration.API.project.model.task.Task;
+import com.example.Project.Collaboaration.API.project.model.user.User;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
@@ -8,7 +10,7 @@ import java.util.List;
 import java.util.Objects;
 
 @Entity
-@Table(name = "project")
+@Table(name = "projects")
 public class Project {
 
     @Id
@@ -22,7 +24,7 @@ public class Project {
     @Column(name = "description")
     private String description;
 
-    @Column(name = "createdDate")
+    @Column(name = "date_created")
     private LocalDate createdDate;
 
     @OneToMany(mappedBy = "project",

@@ -1,4 +1,4 @@
-package com.example.Project.Collaboaration.API.project.model;
+package com.example.Project.Collaboaration.API.project.model.user;
 
 import java.time.LocalDate;
 import java.util.Objects;

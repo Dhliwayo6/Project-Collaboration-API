@@ -1,10 +1,13 @@
-package com.example.Project.Collaboaration.API.project.model;
+package com.example.Project.Collaboaration.API.project.model.task;
 
+import com.example.Project.Collaboaration.API.project.model.project.Project;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
 import java.util.Objects;
 
+@Entity
+@Table(name = "tasks")
 public class Task {
 
     @Id

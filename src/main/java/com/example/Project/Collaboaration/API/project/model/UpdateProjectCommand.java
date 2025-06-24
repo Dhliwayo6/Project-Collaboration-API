@@ -1,5 +1,7 @@
 package com.example.Project.Collaboaration.API.project.model;
 
+import com.example.Project.Collaboaration.API.project.model.project.Project;
+
 public class UpdateProjectCommand {
 
     private Integer id;

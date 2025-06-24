@@ -1,4 +1,7 @@
-package com.example.Project.Collaboaration.API.project.model;
+package com.example.Project.Collaboaration.API.project.model.project;
+
+import com.example.Project.Collaboaration.API.project.model.task.Task;
+import com.example.Project.Collaboaration.API.project.model.user.User;
 
 import java.time.LocalDate;
 import java.util.List;
