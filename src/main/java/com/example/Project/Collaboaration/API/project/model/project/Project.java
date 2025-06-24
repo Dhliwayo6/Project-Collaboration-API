@@ -37,7 +37,7 @@ public class Project {
     @JoinColumn(name = "user_id")
     private User user;
 
-    public Project(Integer id, String name, String description, LocalDate createdDate, List<Task> tasks, User user) {
+    public Project(Integer id, String name, String description, LocalDate createdDate, User user) {
         this.id = id;
         this.name = name;
         this.description = description;

@@ -21,7 +21,7 @@ public class ProjectDTO {
         this.name = project.getName();
         this.description = project.getDescription();
         this.createdDate = project.getCreatedDate();
-        this.tasks = project.getTasks();
+//        this.tasks = project.getTasks();
         this.user = project.getUser();
     }
 
