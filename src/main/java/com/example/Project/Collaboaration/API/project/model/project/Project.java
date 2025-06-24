@@ -37,11 +37,11 @@ public class Project {
     @JoinColumn(name = "user_id")
     private User user;
 
-    public Project(Integer id, String name, String description, LocalDate createdDate, User user) {
+    public Project(Integer id, String name, String description, List<Task> tasks, User user) {
         this.id = id;
         this.name = name;
         this.description = description;
-        this.createdDate = createdDate;
+        this.createdDate = LocalDate.now();
         this.tasks = tasks;
         this.user = user;
     }

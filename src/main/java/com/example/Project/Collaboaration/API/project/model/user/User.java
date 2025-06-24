@@ -37,12 +37,12 @@ public class User {
 
     private List<Project> projects;
 
-    public User(Integer id, String firstName, String lastName, String email, LocalDate dateCreated) {
+    public User(Integer id, String firstName, String lastName, String email) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
-        this.dateCreated = dateCreated;
+        this.dateCreated = LocalDate.now();
         this.projects = new ArrayList<>();
     }
 

@@ -13,9 +13,13 @@ public class CreateUserService implements Command<User, UserDTO> {
 
     private UserRepository userRepository;
 
+    public CreateUserService(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
+
     @Override
     public ResponseEntity<UserDTO> execute(User user) {
         User userSaved = userRepository.save(user);
-        return ResponseEntity.status(HttpStatus.CREATED).body(new UserDTO(user));
+        return ResponseEntity.status(HttpStatus.CREATED).body(new UserDTO(userSaved));
     }
 }

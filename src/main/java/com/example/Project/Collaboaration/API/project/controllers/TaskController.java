@@ -41,17 +41,17 @@ public class TaskController {
         return getTasksService.execute(null);
     }
 
-    @GetMapping("/task{id}")
+    @GetMapping("/task/{id}")
     public ResponseEntity<TaskDTO> getTaskById(@PathVariable Integer id) {
         return getTaskService.execute(id);
     }
 
-    @PutMapping("/task{id}")
+    @PutMapping("/task/{id}")
     public ResponseEntity<TaskDTO> updateTask(@PathVariable Integer id, @RequestBody Task task) {
         return updateTaskService.execute(new UpdateTaskCommand(id, task));
     }
 
-    @DeleteMapping("task{id}")
+    @DeleteMapping("task/{id}")
     public ResponseEntity<Void> deleteTask(@PathVariable Integer id) {
         return deleteTaskService.execute(id);
     }
