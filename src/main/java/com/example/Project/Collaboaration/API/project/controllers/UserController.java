@@ -40,17 +40,17 @@ public class UserController {
         return getUsersService.execute(null);
     }
 
-    @GetMapping("/user{id}")
+    @GetMapping("/user/{id}")
     public ResponseEntity<UserDTO> getUserById(@PathVariable Integer id) {
         return getUserService.execute(id);
     }
 
-    @PutMapping("/user{id}")
+    @PutMapping("/user/{id}")
     public ResponseEntity<UserDTO> updateUser(@PathVariable Integer id, @RequestBody User user) {
         return updateUserService.execute(new UpdateUserCommand(id, user));
     }
 
-    @DeleteMapping("/user{id}")
+    @DeleteMapping("/user/{id}")
     public ResponseEntity<Void> deleteUser(@PathVariable Integer id) {
         return deleteUserService.execute(id);
     }

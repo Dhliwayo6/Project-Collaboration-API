@@ -55,6 +55,7 @@ public class Project {
     }
 
     public Project() {
+        this.createdDate = LocalDate.now();
     }
 
     public void addTask(Task task) {

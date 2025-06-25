@@ -15,13 +15,13 @@ public class Task {
     @Column(name = "id")
     private Integer id;
 
-    @Column(name = "title")
+    @Column(name = "title", nullable = false)
     private String title;
 
-    @Column(name = "content")
+    @Column(name = "content", nullable = false)
     private String content;
 
-    @Column(name = "date_created")
+    @Column(name = "date_created", nullable = false)
     private LocalDate dateCreated;
 
     @ManyToOne(fetch = FetchType.EAGER)
