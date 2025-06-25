@@ -1,8 +1,5 @@
 package com.example.Project.Collaboaration.API.project.model.task;
 
-import com.example.Project.Collaboaration.API.project.model.project.Project;
-
-import java.time.LocalDate;
 import java.util.Objects;
 
 public class TaskDTO {
@@ -10,15 +7,13 @@ public class TaskDTO {
     private Integer id;
     private String title;
     private String content;
-    private LocalDate dateCreated;
-    private Project project;
+    private Integer projectId;
 
     public TaskDTO(Task task) {
         this.id = task.getId();
         this.title = task.getTitle();
         this.content = task.getContent();
-        this.dateCreated = task.getDateCreated();
-        this.project = task.getProject();
+        this.projectId = task.getProject().getId();
     }
 
     public Integer getId() {
@@ -45,31 +40,23 @@ public class TaskDTO {
         this.content = content;
     }
 
-    public LocalDate getDateCreated() {
-        return dateCreated;
+    public Integer getProjectId() {
+        return projectId;
     }
 
-    public void setDateCreated(LocalDate dateCreated) {
-        this.dateCreated = dateCreated;
-    }
-
-    public Project getProject() {
-        return project;
-    }
-
-    public void setProject(Project project) {
-        this.project = project;
+    public void setProjectId(Integer projectId) {
+        this.projectId = projectId;
     }
 
     @Override
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
         TaskDTO taskDTO = (TaskDTO) o;
-        return Objects.equals(id, taskDTO.id) && Objects.equals(title, taskDTO.title) && Objects.equals(content, taskDTO.content) && Objects.equals(dateCreated, taskDTO.dateCreated) && Objects.equals(project, taskDTO.project);
+        return Objects.equals(id, taskDTO.id) && Objects.equals(title, taskDTO.title) && Objects.equals(content, taskDTO.content) && Objects.equals(projectId, taskDTO.projectId);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, title, content, dateCreated, project);
+        return Objects.hash(id, title, content, projectId);
     }
 }

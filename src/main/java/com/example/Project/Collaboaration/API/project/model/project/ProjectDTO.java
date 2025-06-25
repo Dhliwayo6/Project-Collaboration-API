@@ -1,11 +1,12 @@
 package com.example.Project.Collaboaration.API.project.model.project;
 
-import com.example.Project.Collaboaration.API.project.model.task.Task;
+import com.example.Project.Collaboaration.API.project.model.task.TaskDTO;
 import com.example.Project.Collaboaration.API.project.model.user.User;
 
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 public class ProjectDTO {
 
@@ -13,7 +14,7 @@ public class ProjectDTO {
     private String name;
     private String description;
     private LocalDate createdDate;
-    private List<Task> tasks;
+    private List<TaskDTO> tasks;
     private User user;
 
     public ProjectDTO(Project project) {
@@ -21,7 +22,8 @@ public class ProjectDTO {
         this.name = project.getName();
         this.description = project.getDescription();
         this.createdDate = project.getCreatedDate();
-//        this.tasks = project.getTasks();
+        this.tasks = project.getTasks().stream().
+                map(TaskDTO::new).collect(Collectors.toList());
         this.user = project.getUser();
     }
 
@@ -57,11 +59,11 @@ public class ProjectDTO {
         this.createdDate = createdDate;
     }
 
-    public List<Task> getTasks() {
+    public List<TaskDTO> getTasks() {
         return tasks;
     }
 
-    public void setTasks(List<Task> tasks) {
+    public void setTasks(List<TaskDTO> tasks) {
         this.tasks = tasks;
     }
 

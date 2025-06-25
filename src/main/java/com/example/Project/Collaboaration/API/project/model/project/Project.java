@@ -1,8 +1,8 @@
 package com.example.Project.Collaboaration.API.project.model.project;
 
 import com.example.Project.Collaboaration.API.project.model.task.Task;
+import com.example.Project.Collaboaration.API.project.model.task.TaskDTO;
 import com.example.Project.Collaboaration.API.project.model.user.User;
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
