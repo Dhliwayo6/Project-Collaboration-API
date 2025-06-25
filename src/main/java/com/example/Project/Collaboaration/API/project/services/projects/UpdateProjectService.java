@@ -1,6 +1,7 @@
 package com.example.Project.Collaboaration.API.project.services.projects;
 
 import com.example.Project.Collaboaration.API.Command;
+import com.example.Project.Collaboaration.API.project.exceptions.ProjectNotFoundException;
 import com.example.Project.Collaboaration.API.project.model.project.Project;
 import com.example.Project.Collaboaration.API.project.model.project.ProjectDTO;
 import com.example.Project.Collaboaration.API.project.model.UpdateProjectCommand;
@@ -31,6 +32,7 @@ public class UpdateProjectService implements Command<UpdateProjectCommand, Proje
             return ResponseEntity.ok(new ProjectDTO(project));
         }
 
-        throw new IllegalArgumentException("Project not found");
+        throw new ProjectNotFoundException();
+
     }
 }

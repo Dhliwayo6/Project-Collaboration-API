@@ -1,6 +1,7 @@
 package com.example.Project.Collaboaration.API.project.services.tasks;
 
 import com.example.Project.Collaboaration.API.Command;
+import com.example.Project.Collaboaration.API.project.exceptions.TaskNotFoundException;
 import com.example.Project.Collaboaration.API.project.model.UpdateTaskCommand;
 import com.example.Project.Collaboaration.API.project.model.task.Task;
 import com.example.Project.Collaboaration.API.project.model.task.TaskDTO;
@@ -31,6 +32,6 @@ public class UpdateTaskService implements Command<UpdateTaskCommand, TaskDTO> {
             return ResponseEntity.ok(new TaskDTO(task));
         }
 
-        throw new IllegalArgumentException("Task not found");
+        throw new TaskNotFoundException();
     }
 }

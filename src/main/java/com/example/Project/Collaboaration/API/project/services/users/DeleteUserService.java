@@ -1,6 +1,7 @@
 package com.example.Project.Collaboaration.API.project.services.users;
 
 import com.example.Project.Collaboaration.API.Command;
+import com.example.Project.Collaboaration.API.project.exceptions.UserNotFoundException;
 import com.example.Project.Collaboaration.API.project.model.user.User;
 import com.example.Project.Collaboaration.API.project.repositories.UserRepository;
 import org.springframework.http.HttpStatus;
@@ -27,6 +28,6 @@ public class DeleteUserService implements Command<Integer, Void> {
             return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
         }
 
-        throw new IllegalArgumentException("User not found");
+        throw new UserNotFoundException();
     }
 }

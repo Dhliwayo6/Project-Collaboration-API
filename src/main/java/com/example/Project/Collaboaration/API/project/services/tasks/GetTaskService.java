@@ -1,6 +1,7 @@
 package com.example.Project.Collaboaration.API.project.services.tasks;
 
 import com.example.Project.Collaboaration.API.Query;
+import com.example.Project.Collaboaration.API.project.exceptions.TaskNotFoundException;
 import com.example.Project.Collaboaration.API.project.model.task.Task;
 import com.example.Project.Collaboaration.API.project.model.task.TaskDTO;
 import com.example.Project.Collaboaration.API.project.repositories.TaskRepository;
@@ -26,7 +27,7 @@ public class GetTaskService implements Query<Integer, TaskDTO> {
             return ResponseEntity.ok(new TaskDTO(taskOptional.get()));
         }
 
-        throw new IllegalArgumentException("Task not found");
+        throw new TaskNotFoundException();
 
     }
 }

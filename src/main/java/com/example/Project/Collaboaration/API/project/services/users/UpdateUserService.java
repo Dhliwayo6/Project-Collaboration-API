@@ -1,6 +1,7 @@
 package com.example.Project.Collaboaration.API.project.services.users;
 
 import com.example.Project.Collaboaration.API.Command;
+import com.example.Project.Collaboaration.API.project.exceptions.UserNotFoundException;
 import com.example.Project.Collaboaration.API.project.model.UpdateUserCommand;
 import com.example.Project.Collaboaration.API.project.model.user.User;
 import com.example.Project.Collaboaration.API.project.model.user.UserDTO;
@@ -32,6 +33,6 @@ public class UpdateUserService implements Command<UpdateUserCommand, UserDTO> {
             return ResponseEntity.ok(new UserDTO(user));
         }
 
-        throw new IllegalArgumentException("User not found");
+        throw new UserNotFoundException();
     }
 }

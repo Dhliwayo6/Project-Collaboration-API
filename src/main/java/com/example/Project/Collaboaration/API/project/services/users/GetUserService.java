@@ -1,6 +1,7 @@
 package com.example.Project.Collaboaration.API.project.services.users;
 
 import com.example.Project.Collaboaration.API.Query;
+import com.example.Project.Collaboaration.API.project.exceptions.UserNotFoundException;
 import com.example.Project.Collaboaration.API.project.model.user.User;
 import com.example.Project.Collaboaration.API.project.model.user.UserDTO;
 import com.example.Project.Collaboaration.API.project.repositories.UserRepository;
@@ -26,6 +27,6 @@ public class GetUserService implements Query<Integer, UserDTO> {
             return ResponseEntity.ok(new UserDTO(userOptional.get()));
         }
 
-        throw new IllegalArgumentException("User not found");
+        throw new UserNotFoundException();
     }
 }

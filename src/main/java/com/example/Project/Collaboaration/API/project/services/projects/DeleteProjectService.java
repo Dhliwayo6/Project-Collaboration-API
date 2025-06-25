@@ -1,6 +1,7 @@
 package com.example.Project.Collaboaration.API.project.services.projects;
 
 import com.example.Project.Collaboaration.API.Command;
+import com.example.Project.Collaboaration.API.project.exceptions.ProjectNotFoundException;
 import com.example.Project.Collaboaration.API.project.model.project.Project;
 import com.example.Project.Collaboaration.API.project.repositories.ProjectRepository;
 import org.springframework.http.HttpStatus;
@@ -28,6 +29,6 @@ public class DeleteProjectService implements Command<Integer, Void> {
             return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
         }
 
-        throw new IllegalArgumentException("Project not found");
+        throw new ProjectNotFoundException();
     }
 }

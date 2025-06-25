@@ -1,6 +1,7 @@
 package com.example.Project.Collaboaration.API.project.services.projects;
 
 import com.example.Project.Collaboaration.API.Query;
+import com.example.Project.Collaboaration.API.project.exceptions.ProjectNotFoundException;
 import com.example.Project.Collaboaration.API.project.model.project.Project;
 import com.example.Project.Collaboaration.API.project.model.project.ProjectDTO;
 import com.example.Project.Collaboaration.API.project.repositories.ProjectRepository;
@@ -27,6 +28,6 @@ public class GetProjectService implements Query<Integer, ProjectDTO> {
             return ResponseEntity.ok(new ProjectDTO(projectOptional.get()));
         }
 
-        throw new IllegalArgumentException("Project not found");
+        throw new ProjectNotFoundException();
     }
 }

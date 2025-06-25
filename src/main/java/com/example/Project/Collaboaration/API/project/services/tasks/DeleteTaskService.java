@@ -1,6 +1,7 @@
 package com.example.Project.Collaboaration.API.project.services.tasks;
 
 import com.example.Project.Collaboaration.API.Command;
+import com.example.Project.Collaboaration.API.project.exceptions.TaskNotFoundException;
 import com.example.Project.Collaboaration.API.project.model.task.Task;
 import com.example.Project.Collaboaration.API.project.repositories.TaskRepository;
 import org.springframework.http.HttpStatus;
@@ -28,7 +29,7 @@ public class DeleteTaskService implements Command<Integer, Void> {
             return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
         }
 
-        throw new IllegalArgumentException("Task not found");
+        throw new TaskNotFoundException();
 
     }
 }
