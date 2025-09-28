@@ -3,7 +3,7 @@ package com.example.Project.Collaboration.API.project.controllers;
 import com.example.Project.Collaboration.API.project.model.UpdateTaskCommand;
 import com.example.Project.Collaboration.API.project.model.task.Task;
 import com.example.Project.Collaboration.API.project.model.task.TaskDTO;
-import com.example.Project.Collaboaration.API.project.services.tasks.*;
+import com.example.Project.Collaboration.API.project.services.tasks.*;
 import com.example.Project.Collaboration.API.project.services.tasks.*;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

@@ -3,7 +3,7 @@ package com.example.Project.Collaboration.API.project.controllers;
 import com.example.Project.Collaboration.API.project.model.UpdateUserCommand;
 import com.example.Project.Collaboration.API.project.model.user.User;
 import com.example.Project.Collaboration.API.project.model.user.UserDTO;
-import com.example.Project.Collaboaration.API.project.services.users.*;
+import com.example.Project.Collaboration.API.project.services.users.*;
 import com.example.Project.Collaboration.API.project.services.users.*;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
